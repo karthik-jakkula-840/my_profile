@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karthik Jakkula - Full Stack Web Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS Variables ===== */
         :root {
@@ -209,14 +211,31 @@
         }
 
         @keyframes orbFloat1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-30px, 40px) scale(1.1); }
-            66% { transform: translate(20px, -20px) scale(0.9); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-30px, 40px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(20px, -20px) scale(0.9);
+            }
         }
 
         @keyframes orbFloat2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(40px, -30px) scale(1.2); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(40px, -30px) scale(1.2);
+            }
         }
 
         /* Light Ray Effect */
@@ -227,19 +246,24 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg at 50% 50%, 
-                transparent 0deg, 
-                rgba(167, 139, 250, 0.05) 20deg, 
-                transparent 40deg,
-                rgba(236, 72, 153, 0.03) 60deg,
-                transparent 80deg);
+            background: conic-gradient(from 0deg at 50% 50%,
+                    transparent 0deg,
+                    rgba(167, 139, 250, 0.05) 20deg,
+                    transparent 40deg,
+                    rgba(236, 72, 153, 0.03) 60deg,
+                    transparent 80deg);
             animation: lightRotate 20s linear infinite;
             z-index: 0;
         }
 
         @keyframes lightRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .hero-content {
@@ -249,6 +273,21 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            perspective: 1400px;
+        }
+
+        .hero-text,
+        .hero-info {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .hero-content:hover .hero-text {
+            transform: translateZ(18px) rotateY(-2deg);
+        }
+
+        .hero-content:hover .hero-info {
+            transform: translateZ(24px) rotateY(2deg);
         }
 
         .hero-text h1 {
@@ -285,8 +324,15 @@
         }
 
         @keyframes glowPulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.7; }
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         .hero-text .role {
@@ -395,7 +441,7 @@
             font-weight: 400;
         }
 
-        .hero-info-item .info-content p, 
+        .hero-info-item .info-content p,
         .hero-info-item .info-content a {
             font-size: 1.05rem;
             color: var(--white);
@@ -411,6 +457,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -422,20 +469,55 @@
                 opacity: 0;
                 transform: translateX(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
 
-        /* ===== Section Styles ===== */
-        section {
-            padding: 100px 0;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            to {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes logoPulse {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-2px) scale(1.02);
+            }
+        }
+
+        .nav .logo {
+            animation: logoPulse 6s ease-in-out infinite;
         }
 
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .section-header h2 {
@@ -458,6 +540,61 @@
             background: var(--gradient);
             margin: 15px auto 0;
             border-radius: 2px;
+        }
+
+        .about-card,
+        .contact-info,
+        .contact-form,
+        .skill-card,
+        .project-card,
+        .experience-card {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .btn:active {
+            transform: translateY(0) scale(0.99);
+        }
+
+        .skills-grid,
+        .projects-grid,
+        .experience-content,
+        .contact-content,
+        .about-content {
+            perspective: 1400px;
+        }
+
+        .project-card,
+        .skill-card,
+        .experience-card,
+        .contact-info,
+        .contact-form,
+        .about-card {
+            transform-style: preserve-3d;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .project-card:hover,
+        .skill-card:hover,
+        .experience-card:hover,
+        .contact-info:hover,
+        .contact-form:hover {
+            transform: translateY(-8px) rotateX(4deg) rotateY(-3deg);
+            box-shadow: 0 22px 55px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card:hover .project-header,
+        .skill-card:hover .icon-wrapper {
+            transform: translateZ(18px);
+        }
+
+        /* ===== Section Styles ===== */
+        section {
+            padding: 100px 0;
         }
 
         /* ===== About Section ===== */
@@ -643,13 +780,18 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
             animation: rotate 10s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .project-header i {
@@ -924,6 +1066,7 @@
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -934,18 +1077,46 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero-text h1 { font-size: 2.8rem; }
-            .hero-text .tagline { max-width: 100%; }
-            .hero-buttons { justify-content: center; }
-            .hero-info { max-width: 500px; margin: 0 auto; }
-            .about-content { grid-template-columns: 1fr; }
-            .contact-content { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .experience-content { grid-template-columns: 1fr; }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-text .tagline {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-info {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
+            .menu-toggle {
+                display: flex;
+            }
+
             .nav-links {
                 position: absolute;
                 top: 100%;
@@ -954,19 +1125,42 @@
                 background: var(--white);
                 flex-direction: column;
                 padding: 1.5rem 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 display: none;
             }
-            .nav-links.active { display: flex; }
-            .nav-links li { text-align: center; padding: 0.8rem 0; }
-            .hero-text h1 { font-size: 2.2rem; }
-            .hero-text .role { font-size: 1.3rem; }
-            .section-header h2 { font-size: 2rem; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text .role {
+                font-size: 1.3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -996,8 +1190,8 @@
                     <h1>Hi, I'm <span>Karthik Jakkula</span></h1>
                     <p class="role">Full Stack Web Developer</p>
                     <p class="tagline">
-                        Passionate about building modern, responsive web applications. 
-                        With 1 year of experience in front-end development, I transform 
+                        Passionate about building modern, responsive web applications.
+                        With 1 year of experience in front-end development, I transform
                         ideas into elegant digital solutions.
                     </p>
                     <div class="hero-buttons">
@@ -1035,7 +1229,8 @@
                         <i class="fab fa-linkedin"></i>
                         <div class="info-content">
                             <h4>LinkedIn</h4>
-                            <a href="https://linkedin.com/in/karthik-jakkula" target="_blank">linkedin.com/in/karthik-jakkula</a>
+                            <a href="https://linkedin.com/in/karthik-jakkula"
+                                target="_blank">linkedin.com/in/karthik-jakkula</a>
                         </div>
                     </div>
                 </div>
@@ -1054,13 +1249,16 @@
                 <div class="about-card">
                     <h3>My Journey</h3>
                     <p>
-                        I am a Full Stack Developer trainee from Khammam with hands-on experience building web applications using HTML, CSS, JavaScript, Python, and MySQL.
+                        I am a Full Stack Developer trainee from Khammam with hands-on experience building web
+                        applications using HTML, CSS, JavaScript, Python, and MySQL.
                     </p>
                     <p>
-                        I am currently training at the Academy for Careers in Technology by Freshworks, where I am learning both front-end and back-end development in a full stack environment.
+                        I am currently training at the Academy for Careers in Technology by Freshworks, where I am
+                        learning both front-end and back-end development in a full stack environment.
                     </p>
                     <p>
-                        My work is driven by attention to detail, problem solving, and a desire to create polished digital experiences.
+                        My work is driven by attention to detail, problem solving, and a desire to create polished
+                        digital experiences.
                     </p>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> Full Stack Developer trainee</li>
@@ -1072,13 +1270,16 @@
                 </div>
                 <div class="about-text">
                     <p>
-                        My journey began with a strong interest in technology and a commitment to continuous learning. I enjoy working with new tools and improving my skills through project-based development.
+                        My journey began with a strong interest in technology and a commitment to continuous learning. I
+                        enjoy working with new tools and improving my skills through project-based development.
                     </p>
                     <p>
-                        Along the way, I have built responsive, user-friendly websites and practiced collaboration, communication, and problem solving.
+                        Along the way, I have built responsive, user-friendly websites and practiced collaboration,
+                        communication, and problem solving.
                     </p>
                     <p>
-                        I am motivated to join a growth-oriented team where I can contribute to meaningful software solutions while gaining real-world experience.
+                        I am motivated to join a growth-oriented team where I can contribute to meaningful software
+                        solutions while gaining real-world experience.
                     </p>
                 </div>
             </div>
@@ -1168,14 +1369,16 @@
                     <div class="project-body">
                         <h3>Meesho Static Web Page</h3>
                         <p>
-                            A static web page inspired by the Meesho website layout. It includes a navigation bar, product display cards, and banners for an attractive shopping page experience.
+                            A static web page inspired by the Meesho website layout. It includes a navigation bar,
+                            product display cards, and banners for an attractive shopping page experience.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://karthik-jakkula-840.github.io/meesho-website/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://karthik-jakkula-840.github.io/meesho-website/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1186,7 +1389,8 @@
                     <div class="project-body">
                         <h3>Find My Room</h3>
                         <p>
-                            A responsive static website that helps users search rental rooms by location and budget. The design allows easy comparison of room details for better decision-making.
+                            A responsive static website that helps users search rental rooms by location and budget. The
+                            design allows easy comparison of room details for better decision-making.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -1205,14 +1409,16 @@
                     <div class="project-body">
                         <h3>Portfolio Website</h3>
                         <p>
-                            A personal portfolio website built to showcase profile, projects, services, and skills in a structured and user-friendly layout.
+                            A personal portfolio website built to showcase profile, projects, services, and skills in a
+                            structured and user-friendly layout.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://karthik-jakkula-840.github.io/Digital-resume/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://karthik-jakkula-840.github.io/Digital-resume/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1223,7 +1429,8 @@
                     <div class="project-body">
                         <h3>Portfolio Website (Gen AI Assisted)</h3>
                         <p>
-                            A responsive personal portfolio website designed using HTML, CSS, and JavaScript with generative AI support from ChatGPT and Copilot.
+                            A responsive personal portfolio website designed using HTML, CSS, and JavaScript with
+                            generative AI support from ChatGPT and Copilot.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -1231,7 +1438,8 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://karthik-jakkula-840.github.io/my_profile/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://karthik-jakkula-840.github.io/my_profile/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1242,7 +1450,8 @@
                     <div class="project-body">
                         <h3>AgriRent (Gen AI Assisted)</h3>
                         <p>
-                            A web platform for renting agricultural equipment like tractors, harvesters, and ploughs. It includes equipment browsing, online booking, and contact features.
+                            A web platform for renting agricultural equipment like tractors, harvesters, and ploughs. It
+                            includes equipment browsing, online booking, and contact features.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -1250,7 +1459,8 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://karthik-jakkula-840.github.io/Agri-Rent/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://karthik-jakkula-840.github.io/Agri-Rent/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1261,7 +1471,8 @@
                     <div class="project-body">
                         <h3>Sudoku Game (Gen AI Assisted)</h3>
                         <p>
-                            An interactive Sudoku puzzle game with difficulty levels, solution checking, and reset functionality for better user engagement.
+                            An interactive Sudoku puzzle game with difficulty levels, solution checking, and reset
+                            functionality for better user engagement.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -1269,7 +1480,8 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://karthik-jakkula-840.github.io/Sudoku/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://karthik-jakkula-840.github.io/Sudoku/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1280,7 +1492,8 @@
                     <div class="project-body">
                         <h3>Paws Rescue & Rehabilitation</h3>
                         <p>
-                            A responsive static website built to support animal rescue, featuring a clear layout for users to view rescue services and relevant information.
+                            A responsive static website built to support animal rescue, featuring a clear layout for
+                            users to view rescue services and relevant information.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -1288,7 +1501,8 @@
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program"
+                                target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1300,34 +1514,35 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2>Experience</h2>
+                <h2>Experience & Education</h2>
                 <div class="line"></div>
             </div>
+
             <div class="experience-content">
+
+                <!-- Diploma -->
                 <div class="experience-card">
-                    <span class="year">2024 - Present</span>
-                    <h3>Full Stack Web Developer</h3>
-                    <p class="company">Freelance / Personal Projects</p>
+                    <span class="year">2020 - 2023</span>
+                    <h3>Diploma</h3>
+                    <p class="company">S.N. Murthy Polytechnic, Khammam</p>
+                    <p>Completed Diploma with 74%.</p>
+                </div>
+
+                <!-- Current Training -->
+                <div class="experience-card">
+                    <span class="year">Aug 2025 - Present</span>
+                    <h3>Internship / Training</h3>
+                    <p class="company">Academy for Careers in Technology (By Freshworks)</p>
                     <p>
-                        Building responsive websites and web applications for clients. 
-                        Working with HTML, CSS, JavaScript, Python, and various frameworks 
-                        to deliver modern digital solutions.
+                        Currently undergoing training in Front-End Development, Back-End Development,
+                        and Full Stack Web Development. Gaining hands-on experience in building
+                        real-world web applications.
                     </p>
                 </div>
-                <div class="experience-card">
-                    <span class="year">2023 - 2024</span>
-                    <h3>Web Development Training</h3>
-                    <p class="company">Self-Learning & Online Courses</p>
-                    <p>
-                        Completed comprehensive training in web development technologies. 
-                        Gained proficiency in front-end development, back-end programming, 
-                        and database management.
-                    </p>
-                </div>
+
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1384,7 +1599,8 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                            <textarea id="message" name="message" placeholder="Write your message here..."
+                                required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -1432,7 +1648,7 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1445,7 +1661,7 @@
         });
 
         // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
@@ -1466,10 +1682,10 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.skill-card, .project-card, .experience-card').forEach(card => {
+        document.querySelectorAll('.skill-card, .project-card, .experience-card, .about-card, .contact-info, .contact-form, .section-header').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transition = `opacity 0.7s ease ${Math.min(index * 0.06, 0.4)}s, transform 0.7s ease ${Math.min(index * 0.06, 0.4)}s`;
             observer.observe(card);
         });
     </script>
